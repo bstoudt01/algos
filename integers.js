@@ -37,7 +37,6 @@ var isPalindrome = function (x) {
     //hold onto the original number as it will be manipulated
     let originalX = x
 
-    // 
     var digit, result = 0
 
     // if the number is zero ,return true / palindrome
