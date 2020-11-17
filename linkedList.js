@@ -52,6 +52,7 @@ console.log("mergeTwoLists", newlyCreatedListNode);
 // piece of data - val
 //reference to next node - next
 
+//NODE Constructor
 class Node {
     constructor(val) {
         this.val = val;
@@ -59,6 +60,8 @@ class Node {
     }
 }
 
+
+//LINKED LIST constructor with instance methods
 class SinglyLinkedList {
     constructor() {
         this.head = null;
