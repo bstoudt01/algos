@@ -108,6 +108,7 @@ class SinglyLinkedList {
             */
 
         }
+        //return the list
         return this
     }
 
@@ -122,7 +123,6 @@ class SinglyLinkedList {
 
         //loop through until you reach the tail, while there is current
         //while there is something, there is a next, while there is nothing there is not a next and we stop
-        debugger
         while (current.next) {
             newTail = current;
             current = current.next;
@@ -203,7 +203,7 @@ class SinglyLinkedList {
         //Increment Length
         this.length++;
 
-        //return the list.. or the head , or nothing.. etc..
+        //return the list... or the head , or nothing.. etc..
         return this;
 
     }
@@ -218,7 +218,7 @@ class SinglyLinkedList {
 
         let currentNode = this.head;
         //loop through the list until you reach the index
-        for (let i = 0; i <= idx; i++) {
+        for (let i = 1; i <= idx; i++) {
             //assign the currentNode varaible equal to the next property of that node
             currentNode = currentNode.next;
         }
@@ -236,6 +236,96 @@ class SinglyLinkedList {
         return currentNode;
     }
 
+    //set - accept a value and an index
+    //update the value at a given position
+    set(idx, val) {
+
+        //use get to find the node
+        let theNode = this.get(idx)
+
+        //if not found return false
+        if (!theNode) return false
+
+        //set the new value into theNode val to update the list
+        theNode.val = val
+
+        //return confirmation of update
+        return true
+    }
+
+    //insert a new node @ specified position
+    //idx, val
+    insert(idx, val) {
+
+        //if idx is less than zero or gerater than length, return false
+        if (idx < 0 || idx > this.length) return false;
+
+        //if index is the same length, push a new node to the end of the list
+        //instead of if/else statments to handle all repsonses being t/f you can add !! to the push and unshift edge cases and negate the response
+        // return !!this.push(val); ... any return would be evaluated, response from the method are true,
+        if (idx == this.length) {
+            this.push(val)
+        }
+
+        //if the idx is 0, unshift a new node to the start of the list
+        else if (idx === 0) {
+            this.unshift(val);
+        }
+        else {
+
+            //take node before the index you want and point the next val at the new node
+            //get index -1
+            const prevNode = this.get(idx - 1);
+
+            //create new node
+            //place new value into a node  to be set into the list
+            let newNode = new Node(val);
+
+            //set the next property on the newNode to point at the node index you are inserting into
+            newNode.next = prevNode.next;
+            //take  prevNode and point at the  newNode that was just placed into in the index next to it, to the right of the prevNode
+            prevNode.next = newNode;
+
+            //algo example
+            //var temp = prev.next
+            //prevNode.next = newNode
+            //newNode.next = temp;
+
+            //increment the length
+            this.length++
+        }
+
+        //return true if successful
+        //push/unshift dont return t/f, so you have to handle that response (we used if / else)
+        return true;
+    }
+
+    //remove - takes index, removes that index and patches around it (more complicated to remove from the middle than the ends)
+    remove(idx) {
+
+        if (idx < 0 || idx >= this.length) return null;
+
+        //if index is the same as the length -1, pop
+        if (idx === this.length - 1) return this.pop();
+
+        //if index is 0, shift
+        if (idx === 0) return this.shift();
+
+        //other wise handle insert into middle get meothd -1 to get previous node
+        const prevNode = this.get(idx - 1);
+
+        //get new node to have value
+        const removedNode = prevNode.next;
+
+        //set next property on that prevNode to be the next of the removednode, 
+        //now the previous node points to the node that the removed node had pointed to
+        prevNode.next = removedNode.next
+
+        //decrement the length
+        this.length--;
+        //return the value of the node removed
+        return removedNode.val;
+    }
 }
 
 //if tail is not set, use while loop to look at .next value until it is not equal to null
@@ -256,7 +346,11 @@ list.push(99)
 // list.pop();
 //console.log(list.shift());
 //console.log(list.unshift(1))
-console.log(list)
 
 //console.log(list.get(2))
 // list.traverse();
+//console.log(list.set(1, 66))
+//console.log(list.get(0));
+//console.log(list.insert(-1, 22));
+console.log(list.remove(3))
+console.log(list);
