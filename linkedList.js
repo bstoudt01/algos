@@ -326,9 +326,47 @@ class SinglyLinkedList {
         //return the value of the node removed
         return removedNode.val;
     }
+
+    //REVERSE - traverse and reverse in place
+    reverse() {
+
+        //swap the had and the tail
+        const oldHead = this.head;
+        this.head = this.tail;
+        this.tail = oldHead;
+
+        //SLIDING WINDOW
+        //create a variable called next to grab the next value of the oldHead (this.tail)
+        //if you use a for loop, you do not need in instantiate the next value, but we need to since we use a while loop thats watching that value
+        let next = this.tail.next;
+
+        //create a variable called prev, to old the previous node
+        let prev = null;
+
+        //create a variable called current to hold the old head (before the reverse happens)
+        let current = this.tail;
+
+        //loop through the list
+        while (next) {
+
+            //set the next to be the next property on whatever the node is, can also create the next variable here instead of enstanciating above
+            next = current.next;
+
+            //set the next porperty on the current node to be whatever prev is
+            current.next = prev;
+
+            //set the previous node to be the current node
+            prev = current;
+
+            //set the current node to be the value of the the next node
+            current = next;
+
+        }
+
+        return this
+    }
 }
 
-//if tail is not set, use while loop to look at .next value until it is not equal to null
 
 // var first = new Node("Hi")
 // first.next = new Node("there")
@@ -352,5 +390,6 @@ list.push(99)
 //console.log(list.set(1, 66))
 //console.log(list.get(0));
 //console.log(list.insert(-1, 22));
-console.log(list.remove(3))
+//console.log(list.remove(3))
+console.log(list.reverse())
 console.log(list);
