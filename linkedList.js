@@ -330,7 +330,7 @@ class SinglyLinkedList {
     //REVERSE - traverse and reverse in place
     reverse() {
 
-        //swap the had and the tail
+        //swap the head and the tail
         const oldHead = this.head;
         this.head = this.tail;
         this.tail = oldHead;
