@@ -2,7 +2,7 @@
 // Log(N)
 //divide data set into smaller pieces and look at the smaller pieces on where to go next
 
-//EXAMPLE FOR UDEMY JAVASCRIPT ALGORITHMS AND DATASTRUCTURES MASTERCLASS SECTION 5:34
+//EXAMPLE FOR UDEMY JAVASCRIPT ALGORITHMS AND DATASTRUCTURES MASTERCLASS SECTION 5:34  
 //Binary Search
 //given sorted array of integers
 //accepts an array of values and a single value and returns index of the array where that single value is found
