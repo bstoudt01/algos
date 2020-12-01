@@ -25,14 +25,15 @@ function binarySearch(array, value) {
     //index of right pointer / array.length - 1
     let right = array.length - 1
     //loop
-
-    //found element?
-    //while left pointer comes before right pointer
-    //index of middle value 
-    //if value to small  left pointer up
-    //value to to large, move right pointer down
-
+    for (let i = 0; i < array.length; i++) {
+        //found element?
+        //while left pointer comes before right pointer
+        //index of middle value 
+        //if value to small  left pointer up
+        //value to to large, move right pointer down
+    }
     //value doesnt exist? return -1
+    return -1;
 
 
 }
